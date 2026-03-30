@@ -108,7 +108,7 @@
         .micro-checkbox:checked { background-color: #27ae60; border-color: #27ae60; box-shadow: 0 0 10px rgba(39, 174, 96, 0.4); }
         .micro-checkbox:checked::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: white; font-size: 14px; }
 
-        /* Procurement & A4 CSS */
+        /* ================= A4 & PROCUREMENT CSS ================= */
         .scan-line {
             position: absolute; width: 100%; height: 4px; background: #00f2fe;
             box-shadow: 0 0 15px #00f2fe; top: 0; left: 0; opacity: 0; z-index: 10;
@@ -142,6 +142,20 @@
 </head>
 <body class="font-sans pb-16">
 
+    <div id="installModal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity duration-300 no-print">
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl text-center" id="installModalContent">
+            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
+                <i class="fas fa-gem"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2 font-book">Install Matrix App</h3>
+            <p class="text-sm text-gray-600 mb-6">Install your Premium Life & Finance Matrix directly to your home screen.</p>
+            <div class="flex gap-3 justify-center">
+                <button id="closeInstall" class="px-5 py-2.5 text-gray-500 font-bold hover:bg-gray-100 rounded-xl transition">Not Now</button>
+                <button id="confirmInstall" class="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all">Install App</button>
+            </div>
+        </div>
+    </div>
+
     <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-gray-100 no-print">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <h1 class="text-xl md:text-2xl font-book font-bold text-primary flex items-center gap-2">
@@ -154,6 +168,9 @@
                         <div id="xpBar" class="bg-gradient-to-r from-yellow-400 to-yellow-600 h-2 rounded-full xp-fill shadow-[0_0_8px_rgba(241,196,15,0.6)]" style="width: 0%;"></div>
                     </div>
                 </div>
+                <button onclick="exportData()" class="p-2 text-gray-400 hover:text-primary transition" title="Download Backup">
+                    <i class="fas fa-cloud-download-alt text-xl"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -163,34 +180,34 @@
             <div class="watermark">APPROVED</div>
             <div class="text-center border-b-2 border-black pb-4 mb-6 relative z-10">
                 <i class="fas fa-university text-5xl mb-2"></i>
-                <h1 class="text-3xl font-bold uppercase">Department of Procurement</h1>
-                <h2 class="text-xl font-bold">Government of Self-Discipline</h2>
-                <p class="text-sm italic">"Satyameva Jayate - Consistency Triumphs"</p>
+                <h1 class="text-3xl font-bold uppercase tracking-widest">Tracker Administration</h1>
+                <h2 class="text-xl font-bold text-gray-700">UPSC Governance Protocol</h2>
+                <p class="text-sm italic mt-1">"Discipline is the bridge between goals and accomplishment"</p>
             </div>
             
             <div class="flex justify-between text-sm font-bold mb-8 relative z-10">
-                <p>Ref No: <span id="nocRef">PROC/2026/001</span></p>
-                <p>Date: <span id="nocDate">__</span></p>
+                <p>Ref No: <span id="nocRef">TRACK/2026/NOC-001</span></p>
+                <p>Date of Issue: <span id="nocDate">__</span></p>
             </div>
 
-            <h2 class="text-2xl font-bold text-center underline mb-8 relative z-10">NO OBJECTION CERTIFICATE (NOC)</h2>
+            <h2 class="text-2xl font-bold text-center underline mb-8 relative z-10 uppercase tracking-wider">No Objection Certificate (NOC)</h2>
 
-            <div class="text-justify leading-relaxed space-y-4 relative z-10">
-                <p>This is to officially certify that the applicant, <strong>Mr. Umang</strong>, has successfully fulfilled the financial prerequisite of accumulating ₹13,000 in the Central Laptop Fund under the directives of the Personal Governance Protocol.</p>
-                <p>Furthermore, the applicant's academic and disciplinary records have been subjected to rigorous AI verification. It is confirmed that the applicant maintained a strict minimum compliance of <strong>35% in March</strong> and <strong>66% in April</strong>, adhering to the maximum 7-day holiday exemption policy.</p>
-                <p>Therefore, the Department of Procurement has <strong>No Objection</strong> to the applicant proceeding to Stage 2 (Final Permission) for the acquisition of the computing device (Laptop). This certificate is valid only for the designated Procurement Window.</p>
+            <div class="text-justify leading-relaxed space-y-4 relative z-10 text-[15px]">
+                <p>This is to officially certify that the applicant, <strong>Mr. Umang</strong>, has successfully fulfilled the financial prerequisite of accumulating the target sum of ₹13,000 in the Central Laptop Procurement Fund.</p>
+                <p>Furthermore, the applicant's daily study and activity records have been subjected to rigorous AI verification through the Tracker Portal. It is hereby confirmed that the applicant maintained a strict minimum compliance of <strong>35% daily activity in March</strong> and <strong>66% daily activity in April</strong>, adhering strictly to the maximum 7-day holiday exemption policy.</p>
+                <p>Therefore, the Administration has <strong>No Objection</strong> to the applicant proceeding to Stage 2 (Final Permission) for the acquisition of the computing device. This certificate is valid only for the designated Procurement Window (May 1 to May 10, or 10 days post fund completion).</p>
             </div>
 
-            <div class="mt-16 flex justify-between items-end relative z-10">
+            <div class="mt-20 flex justify-between items-end relative z-10">
                 <div>
-                    <div class="stamp mb-4">VERIFIED & CLEARED</div>
-                    <p class="text-xs">System Generated AI Audit</p>
+                    <div class="stamp mb-4 text-xl">VERIFIED BY AI</div>
+                    <p class="text-xs font-bold text-gray-600">System Generated Audit</p>
                 </div>
                 <div class="text-center">
-                    <p class="font-bold text-xl font-display mb-1">A. Rajput</p>
-                    <div class="border-t border-black pt-1">
-                        <p class="font-bold">Authorised Signatory</p>
-                        <p class="text-xs">Chief Administrator</p>
+                    <p class="font-bold text-2xl font-display mb-1" style="font-family: 'Brush Script MT', cursive;">Tracker Admin</p>
+                    <div class="border-t border-black pt-1 px-4">
+                        <p class="font-bold uppercase">Authorised Signatory</p>
+                        <p class="text-xs">Premium Matrix Hub</p>
                     </div>
                 </div>
             </div>
@@ -202,48 +219,49 @@
             <div class="watermark">GRANTED</div>
             <div class="text-center border-b-2 border-black pb-4 mb-6 relative z-10">
                 <i class="fas fa-stamp text-5xl mb-2 text-green-700"></i>
-                <h1 class="text-3xl font-bold uppercase text-green-800">Ministry of Final Authorisation</h1>
-                <h2 class="text-xl font-bold">Executive Council</h2>
+                <h1 class="text-3xl font-bold uppercase text-green-800 tracking-widest">Ministry of Procurement</h1>
+                <h2 class="text-xl font-bold text-gray-700">Final Authorisation Council</h2>
             </div>
             
             <div class="flex justify-between text-sm font-bold mb-8 relative z-10">
-                <p>Order No: <span id="permRef">EXEC/2026/099</span></p>
-                <p>Date: <span id="permDate">__</span></p>
+                <p>Order No: <span id="permRef">TRACK/2026/PERM-099</span></p>
+                <p>Date of Issue: <span id="permDate">__</span></p>
             </div>
 
-            <h2 class="text-2xl font-bold text-center underline mb-8 relative z-10">OFFICIAL PROCUREMENT PERMISSION</h2>
+            <h2 class="text-2xl font-bold text-center underline mb-8 relative z-10 uppercase tracking-wider">OFFICIAL PROCUREMENT PERMISSION</h2>
 
-            <div class="text-justify leading-relaxed space-y-4 relative z-10">
+            <div class="text-justify leading-relaxed space-y-4 relative z-10 text-[15px]">
                 <p>To,</p>
-                <p><strong>Mr. Umang</strong>,<br>Candidate & Executive Aspirant.</p>
+                <p><strong>Mr. Umang</strong>,<br>Candidate & Protocol Administrator.</p>
                 <p>Subject: <strong>Final Authorisation for Laptop Procurement.</strong></p>
                 <p>Sir,</p>
-                <p>With reference to the NOC (Ref: PROC/2026/001) generated upon successful clearance of the March-April Audits, and the subsequent verification of all submitted documents in the portal, the Executive Council hereby grants you the final permission to execute the purchase.</p>
-                <p>You are officially authorised to procure the Laptop. Your designated purchase window and recorded execution date is set for: <strong class="text-lg" id="permPurchaseDate">__</strong>.</p>
-                <p>May this equipment serve as a weapon in your arsenal for your upcoming UPSC examinations and further technological endeavors. Proceed with honour.</p>
+                <p>With reference to the official NOC generated upon the successful clearance of the March-April Audits, and the subsequent Hash verification of all submitted documents in the Tracker portal, the Council hereby grants you the final permission to execute the purchase.</p>
+                <p>You are officially authorised to procure the Laptop. Your designated purchase window and recorded execution date is formally approved for: <strong class="text-lg bg-green-100 px-2 py-1 border border-green-300 rounded" id="permPurchaseDate">__</strong>.</p>
+                <p>May this technological equipment serve as a powerful tool in your arsenal for your upcoming UPSC examinations and future endeavors. Proceed with honour and maintain consistency.</p>
             </div>
 
-            <div class="mt-16 flex justify-between items-end relative z-10">
+            <div class="mt-20 flex justify-between items-end relative z-10">
                 <div>
-                    <div class="stamp stamp-green mb-4">PERMISSION GRANTED</div>
+                    <div class="stamp stamp-green mb-4 text-xl">PERMISSION GRANTED</div>
+                    <p class="text-xs font-bold text-gray-600">Valid for designated date only.</p>
                 </div>
                 <div class="text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/200px-Emblem_of_India.svg.png" style="height: 60px; margin: 0 auto 10px; opacity: 0.5; mix-blend-mode: multiply;">
-                    <div class="border-t border-black pt-1">
-                        <p class="font-bold">Executive Magistrate</p>
-                        <p class="text-xs">ARATS Governance OS</p>
+                    <i class="fas fa-check-double text-4xl text-gray-300 mb-2"></i>
+                    <div class="border-t border-black pt-1 px-4">
+                        <p class="font-bold uppercase">Executive Magistrate</p>
+                        <p class="text-xs">Premium Matrix OS</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <main class="max-w-6xl mx-auto px-4 mt-8 no-print">
 
         <div id="home-page" class="page-view active">
             <div class="text-center mb-8 relative">
-                <h2 class="text-4xl font-book font-bold text-gray-800 mb-2">Welcome Back!</h2>
-                <p class="text-gray-600 text-lg">Mission Target: 1 May 2026. Dashboard Active.</p>
+                <div class="absolute inset-0 bg-blue-400 blur-[80px] opacity-10 rounded-full z-0"></div>
+                <h2 class="text-4xl font-book font-bold text-gray-800 mb-2 relative z-10" id="greetingText">Welcome Back!</h2>
+                <p class="text-gray-600 text-lg relative z-10">Mission Target: 1 May 2026. Dashboard Active.</p>
             </div>
 
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -265,7 +283,7 @@
                 </div>
             </div>
 
-            <div class="white-card mb-10">
+            <div class="white-card mb-10 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
                 <div class="flex justify-between items-end mb-4 border-b border-gray-100 pb-2">
                     <h3 class="text-xl font-book font-bold text-gray-800"><i class="fas fa-chart-line text-purple-500 mr-2"></i> Weekly Matrix</h3>
                 </div>
@@ -276,8 +294,8 @@
                 <div class="col-span-1 md:col-span-2 lg:col-span-3">
                     <button onclick="showPage('laptop-page')" class="w-full btn-3d btn-laptop rounded-2xl p-6 text-left flex items-center justify-between group">
                         <div>
-                            <h3 class="text-2xl md:text-3xl font-book font-bold mb-2 flex items-center gap-3"><i class="fas fa-laptop text-white shadow-lg rounded-full p-2 bg-white/20"></i> Laptop Savings Tracker & Procurement</h3>
-                            <p class="opacity-90 font-bold text-sm tracking-wide bg-black/10 inline-block px-3 py-1 rounded-full">TARGET: ₹13,000 | Official NOC Hub Included</p>
+                            <h3 class="text-2xl md:text-3xl font-book font-bold mb-2 flex items-center gap-3"><i class="fas fa-laptop text-white shadow-lg rounded-full p-2 bg-white/20"></i> Laptop Savings & Procurement</h3>
+                            <p class="opacity-90 font-bold text-sm tracking-wide bg-black/10 inline-block px-3 py-1 rounded-full">TARGET: ₹13,000 | Official Verification Hub</p>
                         </div>
                         <i class="fas fa-chevron-right text-4xl opacity-70 group-hover:translate-x-2 transition"></i>
                     </button>
@@ -302,7 +320,7 @@
                 <div class="white-card bg-[#fffdf0] border-l-4 border-l-yellow-400"> 
                     <h3 class="font-book font-bold text-xl mb-2 text-gray-800"><i class="fas fa-pen-nib text-gray-500"></i> Daily Thoughts (Journal)</h3>
                     <p class="text-sm text-gray-500 mb-4 font-bold" id="journalDate"></p>
-                    <textarea id="dailyJournal" class="w-full h-32 bg-transparent border-b border-gray-300 border-dashed outline-none resize-none font-book text-base leading-relaxed" placeholder="Aaj ka din kaisa raha? Aapne kya achieve kiya?"></textarea>
+                    <textarea id="dailyJournal" class="w-full h-32 bg-transparent border-b border-gray-300 border-dashed outline-none resize-none font-book text-base leading-relaxed" placeholder="Aaj ka din kaisa raha?"></textarea>
                     <div class="flex items-center gap-3 mt-3">
                         <button onclick="saveJournal()" class="bg-gray-800 text-white px-4 py-2 rounded-lg font-bold hover:bg-black transition shadow-lg">Save Note</button>
                         <span id="journalStatus" class="text-sm font-bold text-success hidden">Saved! ✓</span>
@@ -364,22 +382,23 @@
                 </div>
             </div>
 
-            <div class="white-card mb-8 border-2 border-slate-300 relative bg-[#fdfdfd]">
-                <div class="absolute top-0 right-0 bg-slate-800 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg tracking-widest uppercase">RESTRICTED ZONE</div>
+            <div class="white-card mb-8 border-2 border-slate-300 relative bg-[#fcfcfc] shadow-lg">
+                <div class="absolute top-0 right-0 bg-slate-800 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg tracking-widest uppercase shadow-sm">Strict Evaluation Zone</div>
                 
                 <div class="flex justify-between items-center border-b border-gray-200 pb-4 mb-6">
                     <div>
-                        <h2 class="text-2xl font-black font-book text-slate-800 flex items-center gap-3"><i class="fas fa-shield-alt text-slate-500"></i> OFFICIAL PROCUREMENT HUB</h2>
-                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mt-1">Multi-Stage AI Audit & Clearance System</p>
+                        <h2 class="text-2xl font-black font-book text-slate-800 flex items-center gap-3"><i class="fas fa-shield-alt text-slate-500"></i> CLEARANCE PROTOCOL HUB</h2>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mt-1">Multi-Stage AI Audit & NOC Generation System</p>
                     </div>
-                    <button onclick="document.getElementById('ruleModal').classList.remove('hidden')" class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-200 transition" title="Read Procurement Rules"><i class="fas fa-info-circle text-xl"></i></button>
+                    <button onclick="document.getElementById('ruleModal').classList.remove('hidden')" class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-200 transition shadow-sm border border-blue-200" title="Read Procurement Rules"><i class="fas fa-info-circle text-xl"></i></button>
                 </div>
 
-                <div id="hubLockScreen" class="absolute inset-0 bg-white/80 backdrop-blur-md z-20 flex flex-col items-center justify-center rounded-16px text-center p-6">
+                <div id="hubLockScreen" class="absolute inset-0 bg-white/85 backdrop-blur-sm z-20 flex flex-col items-center justify-center rounded-16px text-center p-6 transition-opacity duration-500">
                     <i class="fas fa-lock text-6xl text-slate-400 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Portal Locked</h3>
-                    <p class="text-sm font-semibold text-slate-600 mb-4 max-w-md">The procurement window will automatically unlock when your Central Fund reaches ₹13,000. Keep saving to access the NOC verification tools.</p>
-                    <p class="text-[10px] font-black uppercase tracking-widest bg-red-100 text-red-600 px-3 py-1.5 rounded">STATUS: INSUFFICIENT FUNDS</p>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Protocol Locked</h3>
+                    <p class="text-sm font-semibold text-slate-600 mb-4 max-w-md" id="lockScreenReason">The procurement window will automatically unlock when your Central Fund reaches ₹13,000 AND the designated verification date (May 1 - May 10, or within 10 days of target completion) is active.</p>
+                    
+                    <button onclick="document.getElementById('hubLockScreen').classList.add('hidden')" class="text-[10px] font-black uppercase tracking-widest bg-slate-200 text-slate-500 px-3 py-1.5 rounded hover:bg-slate-300 transition mt-2">Bypass For Testing</button>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -389,7 +408,7 @@
                             <h4 class="font-bold text-sm uppercase tracking-widest text-slate-700">Step 1: March Audit</h4>
                             <span id="marchStatusBadge" class="text-[10px] font-black bg-yellow-100 text-yellow-700 px-2 py-1 rounded">PENDING</span>
                         </div>
-                        <p class="text-xs text-slate-500 font-semibold mb-4">Requirement: Minimum 35% overall compliance. Upload ARATS Calendar screenshot.</p>
+                        <p class="text-xs text-slate-500 font-semibold mb-4">Requirement: Minimum 35% overall compliance. Upload Tracker Monthly Calendar screenshot.</p>
                         
                         <div id="marchScannerUI" class="border-2 border-dashed border-blue-200 bg-blue-50/50 rounded-lg p-4 text-center relative overflow-hidden transition-all h-32 flex flex-col justify-center items-center">
                             <input type="file" id="marchUpload" class="hidden" accept="image/*" onchange="startScan('march')">
@@ -408,9 +427,9 @@
                     <div class="border border-slate-200 rounded-xl p-5 bg-white shadow-sm relative overflow-hidden group">
                         <div class="flex justify-between items-center mb-3">
                             <h4 class="font-bold text-sm uppercase tracking-widest text-slate-700">Step 2: April Audit</h4>
-                            <span id="aprilStatusBadge" class="text-[10px] font-black bg-yellow-100 text-yellow-700 px-2 py-1 rounded">LOCKED</span>
+                            <span id="aprilStatusBadge" class="text-[10px] font-black bg-gray-100 text-gray-500 px-2 py-1 rounded">LOCKED</span>
                         </div>
-                        <p class="text-xs text-slate-500 font-semibold mb-4">Requirement: Minimum 66% overall compliance. Unlock after March Audit.</p>
+                        <p class="text-xs text-slate-500 font-semibold mb-4">Requirement: Strict Minimum 66% overall compliance. Unlocks after successful March Audit.</p>
                         
                         <div id="aprilScannerUI" class="border-2 border-dashed border-gray-200 bg-gray-50 rounded-lg p-4 text-center relative overflow-hidden transition-all h-32 flex flex-col justify-center items-center opacity-50 pointer-events-none">
                             <input type="file" id="aprilUpload" class="hidden" accept="image/*" onchange="startScan('april')">
@@ -427,39 +446,39 @@
                     </div>
                 </div>
 
-                <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-6 flex items-start gap-3">
-                    <input type="checkbox" id="affidavitCheck" class="mt-1 w-4 h-4 cursor-pointer" onchange="checkNOCReady()">
+                <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-6 flex items-start gap-3 shadow-inner">
+                    <input type="checkbox" id="affidavitCheck" class="mt-1 w-5 h-5 cursor-pointer" onchange="checkNOCReady()">
                     <div class="text-sm text-yellow-800 font-medium">
-                        <strong>Official Affidavit:</strong> I hereby declare that the uploaded screenshots are authentic and unmodified. I also claim that I have not exceeded the maximum limit of 7 allowed holidays across both months.
+                        <strong>Official Affidavit:</strong> I hereby declare that the uploaded calendar screenshots are authentic and unmodified. I also solemnly affirm that I have not exceeded the maximum limit of <strong>7 allowed holidays</strong> across both March and April.
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between p-5 bg-slate-50 border border-slate-200 rounded-xl mb-6 shadow-inner">
+                <div class="flex flex-col md:flex-row items-center justify-between p-5 bg-slate-50 border border-slate-200 rounded-xl mb-6 shadow-sm gap-4">
                     <div>
-                        <h4 class="font-bold text-slate-800">Step 3: Issue No Objection Certificate</h4>
-                        <p class="text-xs text-slate-500">Requires 100% Audit Clearance & Affidavit</p>
+                        <h4 class="font-bold text-slate-800 uppercase tracking-widest text-sm mb-1">Step 3: Issue No Objection Certificate</h4>
+                        <p class="text-xs text-slate-500 font-semibold">Requires 100% Audit Clearance & Affidavit Acceptance</p>
                     </div>
-                    <button id="generateNOCBtn" onclick="generateNOC()" disabled class="bg-gray-300 text-white font-bold uppercase tracking-widest text-xs px-6 py-3 rounded-lg shadow-sm cursor-not-allowed transition">Generate NOC</button>
+                    <button id="generateNOCBtn" onclick="generateNOC()" disabled class="bg-gray-300 text-white font-bold uppercase tracking-widest text-xs px-8 py-3.5 rounded-lg shadow-sm cursor-not-allowed transition w-full md:w-auto">Generate Official NOC</button>
                 </div>
 
-                <div class="border border-slate-200 rounded-xl p-5 bg-white shadow-sm">
+                <div class="border border-slate-200 rounded-xl p-6 bg-white shadow-sm border-t-4 border-t-green-500">
                     <div class="flex justify-between items-center mb-4">
                         <h4 class="font-bold text-sm uppercase tracking-widest text-slate-700">Step 4: Final Procurement Authorisation</h4>
-                        <span id="permStatusBadge" class="text-[10px] font-black bg-yellow-100 text-yellow-700 px-2 py-1 rounded">LOCKED</span>
+                        <span id="permStatusBadge" class="text-[10px] font-black bg-gray-100 text-gray-500 px-2 py-1 rounded">LOCKED</span>
                     </div>
-                    <p class="text-xs text-slate-500 font-semibold mb-4">Upload the generated NOC document screenshot here for final stage verification by the Executive Magistrate system.</p>
+                    <p class="text-xs text-slate-500 font-semibold mb-4">Upload the generated NOC document screenshot here for final stage Hash verification by the system. Once verified, select your purchase date.</p>
                     
-                    <div class="flex flex-col md:flex-row gap-4 items-center">
-                        <div id="nocUploadBox" class="flex-1 border-2 border-dashed border-gray-200 bg-gray-50 rounded-lg p-4 text-center relative overflow-hidden transition-all h-16 flex flex-col justify-center items-center opacity-50 pointer-events-none">
+                    <div class="flex flex-col lg:flex-row gap-4 items-center">
+                        <div id="nocUploadBox" class="flex-1 w-full border-2 border-dashed border-gray-200 bg-gray-50 rounded-lg p-4 text-center relative overflow-hidden transition-all h-16 flex flex-col justify-center items-center opacity-50 pointer-events-none">
                             <input type="file" id="nocUpload" class="hidden" accept="image/*" onchange="startNOCVerify()">
                             <div onclick="document.getElementById('nocUpload').click()" class="cursor-pointer w-full h-full flex flex-col items-center justify-center text-slate-500">
-                                <span class="text-xs font-bold uppercase"><i class="fas fa-upload mr-1"></i> Upload Verified NOC</span>
+                                <span class="text-xs font-bold uppercase tracking-widest"><i class="fas fa-upload mr-1 text-lg align-middle"></i> Upload Verified NOC</span>
                             </div>
                         </div>
                         
-                        <div class="flex-1 w-full flex gap-2">
-                            <input type="date" id="purchaseDateInput" disabled class="bg-gray-100 border border-gray-200 p-3 rounded-lg text-xs font-bold outline-none flex-1 cursor-not-allowed">
-                            <button id="generatePermBtn" onclick="generatePerm()" disabled class="bg-gray-300 text-white font-bold uppercase tracking-widest text-[10px] px-4 py-3 rounded-lg shadow-sm cursor-not-allowed transition flex-1">Issue Order</button>
+                        <div class="flex-1 w-full flex gap-3">
+                            <input type="date" id="purchaseDateInput" disabled class="bg-gray-100 border border-gray-200 p-3.5 rounded-lg text-xs font-bold outline-none flex-1 cursor-not-allowed shadow-inner text-slate-600">
+                            <button id="generatePermBtn" onclick="generatePerm()" disabled class="bg-gray-300 text-white font-bold uppercase tracking-widest text-xs px-6 py-3.5 rounded-lg shadow-sm cursor-not-allowed transition flex-1">Issue Order</button>
                         </div>
                     </div>
                 </div>
@@ -507,37 +526,39 @@
 
     </main>
 
-    <div id="ruleModal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+    <div id="ruleModal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm no-print">
         <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
             <div class="p-5 bg-slate-800 text-white flex justify-between items-center">
-                <h3 class="font-bold text-lg uppercase tracking-widest"><i class="fas fa-gavel mr-2"></i> Procurement Rules</h3>
-                <button onclick="document.getElementById('ruleModal').classList.add('hidden')" class="text-slate-400 hover:text-white"><i class="fas fa-times"></i></button>
+                <h3 class="font-bold text-lg uppercase tracking-widest"><i class="fas fa-gavel mr-2 text-blue-400"></i> Procurement Protocol</h3>
+                <button onclick="document.getElementById('ruleModal').classList.add('hidden')" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
             </div>
             <div class="p-6 space-y-4 text-sm text-slate-700 bg-slate-50 overflow-y-auto max-h-[60vh]">
-                <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl text-blue-800 font-semibold">The Laptop Purchase Window will strictly open between <strong>May 1 and May 10, 2026</strong>, provided the 13k fund is met.</div>
-                <ul class="list-decimal pl-5 space-y-3 font-medium">
-                    <li><strong>Financial Clear:</strong> Minimum ₹13,000 in Central Fund.</li>
-                    <li><strong>March Audit:</strong> Upload ARATS calendar. AI must verify a minimum of 35% daily activity completion.</li>
-                    <li><strong>April Audit:</strong> Upload ARATS calendar. AI must verify a strict minimum of 66% daily activity.</li>
-                    <li><strong>Holiday Rule:</strong> A maximum of 7 days of non-compliance (Holidays) are exempt across both months.</li>
-                    <li><strong>NOC:</strong> Upon successful AI scan and Affidavit check, generate the Official NOC.</li>
-                    <li><strong>Final Permission:</strong> Upload the NOC back into the portal for Executive Magistrate verification to receive the final purchase order.</li>
+                <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl text-blue-800 font-semibold leading-relaxed shadow-inner">
+                    The Laptop Purchase Window will strictly open between <strong>May 1 and May 10, 2026</strong>, OR within 10 days of completing the target fund (whichever is applicable), provided the ₹13k fund is fully met.
+                </div>
+                <ul class="list-decimal pl-5 space-y-3 font-medium text-slate-800">
+                    <li><strong>Financial Clearance:</strong> Minimum ₹13,000 must be deposited in the Central Fund.</li>
+                    <li><strong>March Audit (Step 1):</strong> Upload Tracker monthly calendar. AI must verify a minimum of <strong>35% daily activity</strong> completion.</li>
+                    <li><strong>April Audit (Step 2):</strong> Upload Tracker monthly calendar. AI must verify a strict minimum of <strong>66% daily activity</strong>.</li>
+                    <li><strong>Holiday Rule:</strong> A maximum of <strong>7 days</strong> of non-compliance (Holidays) are exempt across both months combined.</li>
+                    <li><strong>NOC Issue:</strong> Upon successful AI scan and Affidavit check, generate the Official NOC document and save it.</li>
+                    <li><strong>Final Permission:</strong> Upload the NOC back into the portal for Executive Hash verification to receive the final purchase order.</li>
                 </ul>
             </div>
-            <div class="p-4 bg-white border-t border-slate-200 text-center"><button onclick="document.getElementById('ruleModal').classList.add('hidden')" class="bg-slate-800 text-white px-6 py-2 rounded-lg font-bold">I Understand</button></div>
+            <div class="p-4 bg-white border-t border-slate-200 text-center"><button onclick="document.getElementById('ruleModal').classList.add('hidden')" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold uppercase tracking-widest shadow-md transition">I Understand & Accept</button></div>
         </div>
     </div>
 
-    <div id="previewModal" class="fixed inset-0 bg-slate-900/90 z-[150] hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div id="previewModal" class="fixed inset-0 bg-slate-900/95 z-[150] hidden flex items-center justify-center p-4 overflow-y-auto no-print">
         <div class="relative w-full max-w-4xl max-h-[90vh] flex flex-col items-center">
-            <div class="w-full flex justify-between items-center mb-4 bg-slate-800 p-4 rounded-xl shadow-lg">
-                <h3 class="text-white font-bold uppercase tracking-widest" id="previewTitle">Document Preview</h3>
-                <div class="flex gap-3">
-                    <button onclick="window.print()" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-blue-700"><i class="fas fa-print"></i> Print / Save PDF</button>
-                    <button onclick="closePreview()" class="bg-red-500 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-red-600"><i class="fas fa-times"></i> Close</button>
+            <div class="w-full flex flex-col md:flex-row justify-between items-center mb-4 bg-slate-800 p-4 rounded-xl shadow-lg border border-slate-700 gap-4">
+                <h3 class="text-white font-bold uppercase tracking-widest flex items-center gap-2"><i class="fas fa-file-contract text-blue-400"></i> <span id="previewTitle">Document Preview</span></h3>
+                <div class="flex gap-3 w-full md:w-auto">
+                    <button onclick="window.print()" class="flex-1 md:flex-none bg-blue-600 text-white px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-blue-700 shadow-md transition flex justify-center items-center gap-2"><i class="fas fa-print text-lg"></i> Print / Save PDF</button>
+                    <button onclick="closePreview()" class="flex-1 md:flex-none bg-slate-600 text-white px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-slate-700 shadow-md transition flex justify-center items-center gap-2"><i class="fas fa-times text-lg"></i> Close</button>
                 </div>
             </div>
-            <div id="previewContent" class="transform scale-75 md:scale-100 origin-top bg-white shadow-2xl"></div>
+            <div id="previewContent" class="transform scale-75 md:scale-100 origin-top bg-white shadow-2xl rounded-sm"></div>
         </div>
     </div>
 
@@ -568,10 +589,10 @@
 
         let appData = JSON.parse(localStorage.getItem('premiumMatrixDb')) || {
             xp: 0, financeLog: [], habitTracker: {}, diary: {}, feed: [], milestonesHit: [],
-            clearance: { marchScanned: false, aprilScanned: false, nocGenerated: false, nocVerified: false, permGenerated: false }
+            clearance: { marchScanned: false, aprilScanned: false, nocGenerated: false, nocVerified: false, permGenerated: false, targetHitDate: null }
         };
 
-        if(!appData.clearance) appData.clearance = { marchScanned: false, aprilScanned: false, nocGenerated: false, nocVerified: false, permGenerated: false };
+        if(!appData.clearance) appData.clearance = { marchScanned: false, aprilScanned: false, nocGenerated: false, nocVerified: false, permGenerated: false, targetHitDate: null };
 
         Object.keys(HABITS_INFO).forEach(k => {
             HABITS_INFO[k].subs.forEach((_, idx) => {
@@ -588,6 +609,29 @@
             if(document.getElementById('journalDate')) document.getElementById('journalDate').innerText = new Date().toLocaleDateString('en-IN', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
             if(appData.diary[TODAY_STR] && document.getElementById('dailyJournal')) document.getElementById('dailyJournal').value = appData.diary[TODAY_STR];
             
+            // PWA Logic Check
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW Failed', err));
+            }
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault(); deferredPrompt = e;
+                setTimeout(() => { 
+                    document.getElementById('installModal').classList.remove('hidden');
+                    setTimeout(() => document.getElementById('installModalContent').classList.remove('scale-95'), 10);
+                }, 1500);
+            });
+            if(document.getElementById('confirmInstall')) {
+                document.getElementById('confirmInstall').addEventListener('click', async () => {
+                    document.getElementById('installModal').classList.add('hidden');
+                    if (deferredPrompt) { deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; }
+                });
+                document.getElementById('closeInstall').addEventListener('click', () => {
+                    document.getElementById('installModalContent').classList.add('scale-95');
+                    setTimeout(() => document.getElementById('installModal').classList.add('hidden'), 200);
+                });
+            }
+
             updateFinanceSystem(); 
             refreshHomeDashboard(); 
             initClearanceHub();
@@ -595,7 +639,7 @@
 
         function saveDb() { localStorage.setItem('premiumMatrixDb', JSON.stringify(appData)); updateTopBar(); renderActivityFeed(); refreshHomeDashboard(); }
 
-        // --- Core Helpers (XP, Routing, Habit Page) retained perfectly as original ---
+        // --- Core Helpers ---
         function addXP(amt, reasonText) { appData.xp += amt; if(appData.xp < 0) appData.xp = 0; const time = new Date().toLocaleTimeString('en-IN', {hour: '2-digit', minute:'2-digit'}); appData.feed.unshift({ time: time, text: `XP ${amt > 0 ? '+' : ''}${amt}: ${reasonText}`, color: amt > 0 ? 'text-gold' : 'text-danger' }); if(appData.feed.length > 30) appData.feed.pop(); saveDb(); }
         function updateTopBar() { const level = Math.floor(0.1 * Math.sqrt(appData.xp)) + 1; const curLvlXP = Math.pow((level - 1) / 0.1, 2); const nextLvlXP = Math.pow(level / 0.1, 2); const progress = ((appData.xp - curLvlXP) / (nextLvlXP - curLvlXP)) * 100; if(document.getElementById('userLevel')) document.getElementById('userLevel').innerText = level; if(document.getElementById('xpBar')) document.getElementById('xpBar').style.width = `${progress}%`; if(document.getElementById('dashTotalXP')) document.getElementById('dashTotalXP').innerText = appData.xp; }
         function renderActivityFeed() { const c = document.getElementById('activityFeed'); if(!c) return; c.innerHTML = ''; appData.feed.forEach(log => { c.innerHTML += `<div class="flex items-start gap-3 border-b border-gray-100 pb-3 last:border-0 text-sm hover:bg-gray-50 p-2 rounded transition"><i class="fas fa-bolt text-[10px] mt-1.5 ${log.color || 'text-primary'}"></i><div><p class="font-bold text-gray-800">${log.text}</p><p class="text-xs text-gray-400 mt-1"><i class="far fa-clock"></i> ${log.time}</p></div></div>`; }); }
@@ -608,6 +652,8 @@
         function updateMicroStatus() { const info = HABITS_INFO[currentHabitId]; let done = 0; info.subs.forEach((_, idx) => { if(appData.habitTracker[`${currentHabitId}_${idx}`].includes(TODAY_STR)) done++; }); document.getElementById('microStatusText').innerText = `${done}/${info.subs.length} Completed Today`; const pBar = document.getElementById('microProgressBar'); let pct = (done/info.subs.length)*100; pBar.style.width = pct + '%'; if(pct === 100) pBar.classList.replace('bg-green-500', 'bg-blue-500'); else pBar.classList.replace('bg-blue-500', 'bg-green-500'); }
         function getHabitDayScore(dateStr) { const info = HABITS_INFO[currentHabitId]; let done = 0; info.subs.forEach((_, idx) => { if(appData.habitTracker[`${currentHabitId}_${idx}`].includes(dateStr)) done++; }); return done / info.subs.length; }
         function refreshHabitStats() { let totalPerfect = 0; const allDatesSet = new Set(); HABITS_INFO[currentHabitId].subs.forEach((_, idx) => { appData.habitTracker[`${currentHabitId}_${idx}`].forEach(d => allDatesSet.add(d)); }); allDatesSet.forEach(d => { if(getHabitDayScore(d) === 1) totalPerfect++; }); document.getElementById('totalDaysStat').innerText = totalPerfect; let streak = 0; let dObj = new Date(); if(getHabitDayScore(TODAY_STR) < 1) dObj.setDate(dObj.getDate() - 1); while(true) { let dStr = dObj.toISOString().split('T')[0]; if(getHabitDayScore(dStr) === 1) { streak++; dObj.setDate(dObj.getDate() - 1); } else break; } document.getElementById('streakStat').innerText = streak; const heatGrid = document.getElementById('habitHeatmap'); heatGrid.innerHTML = ''; for(let i = 29; i >= 0; i--) { let tempD = new Date(); tempD.setDate(tempD.getDate() - i); let dateStr = tempD.toISOString().split('T')[0]; let score = getHabitDayScore(dateStr); let colorClass = ''; if(score === 1) colorClass = 'heat-good'; else if (score > 0) colorClass = 'heat-partial'; let borderClass = (i === 0 && score < 1) ? 'border-2 border-gray-400 border-dashed' : ''; heatGrid.innerHTML += `<div class="heat-box ${colorClass} ${borderClass}" title="${dateStr}: ${Math.round(score*100)}% Done"></div>`; } }
+        function saveJournal() { appData.diary[TODAY_STR] = document.getElementById('dailyJournal').value; saveDb(); document.getElementById('journalStatus').classList.remove('hidden'); setTimeout(() => document.getElementById('journalStatus').classList.add('hidden'), 2000); }
+        function exportData() { const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData, null, 2)); const anchor = document.createElement('a'); anchor.setAttribute("href", dataStr); anchor.setAttribute("download", "PremiumDiary_Backup.json"); document.body.appendChild(anchor); anchor.click(); anchor.remove(); }
 
         // --- Finance System ---
         function quickAdd(amt) { document.getElementById('amtInput').value = amt; document.getElementById('noteInput').value = "Quick Deposit"; document.getElementById('fCategory').value = "Daily Savings"; document.querySelector('input[name="transType"][value="deposit"]').checked = true; document.getElementById('financeForm').scrollIntoView({behavior: 'smooth'}); }
@@ -640,18 +686,47 @@
         function renderFinanceChart() { const chartCont = document.getElementById('financeChart'); chartCont.innerHTML = ''; let dailyData = {}; for(let i=6; i>=0; i--) { let d = new Date(); d.setDate(d.getDate() - i); dailyData[d.toISOString().split('T')[0]] = 0; } appData.financeLog.forEach(t => { if(dailyData[t.dateStr] !== undefined && t.type === 'deposit') dailyData[t.dateStr] += t.amount; }); const maxVal = Math.max(...Object.values(dailyData), 100); Object.keys(dailyData).forEach(date => { const amt = dailyData[date]; const height = (amt / maxVal) * 100; const dayName = new Date(date).toLocaleDateString('en-IN', {weekday:'short'}); chartCont.innerHTML += `<div class="flex flex-col justify-end items-center flex-1 h-full group"><div class="chart-bar w-full max-w-[40px] shadow-sm" style="height: ${Math.max(height, 5)}%" data-val="₹${amt}"></div><span class="text-xs font-bold text-gray-500 mt-2">${dayName}</span></div>`; }); }
 
         // ==========================================
-        // PROCUREMENT CLEARANCE HUB LOGIC (NEW)
+        // PROCUREMENT CLEARANCE HUB LOGIC (NEW 2026)
         // ==========================================
+        function isDateWithinWindow(hitDateStr) {
+            const todayTime = new Date().getTime();
+            // Window 1: Strictly May 1 to May 10, 2026
+            const may1 = new Date("2026-05-01T00:00:00").getTime();
+            const may10 = new Date("2026-05-10T23:59:59").getTime();
+            if (todayTime >= may1 && todayTime <= may10) return true;
+            
+            // Window 2: Within 10 days of completing the target
+            if (hitDateStr) {
+                const hitDate = new Date(hitDateStr).getTime();
+                const daysDiff = (todayTime - hitDate) / (1000 * 3600 * 24);
+                if (daysDiff >= 0 && daysDiff <= 10) return true;
+            }
+            return false;
+        }
+
         function initClearanceHub() {
             let totalFund = appData.financeLog.reduce((s,t) => t.type==='deposit' ? s+t.amount : s-t.amount, 0);
-            const isUnlocked = totalFund >= 13000;
+            
+            // Save target hit date if hit for the first time
+            if (totalFund >= 13000 && !appData.clearance.targetHitDate) {
+                appData.clearance.targetHitDate = TODAY_STR;
+                saveDb();
+            }
+
+            // Check Fund and Date conditions
+            const fundMet = totalFund >= 13000;
+            const windowOpen = isDateWithinWindow(appData.clearance.targetHitDate);
             
             const lockScreen = document.getElementById('hubLockScreen');
-            if(isUnlocked) {
+            const reasonTxt = document.getElementById('lockScreenReason');
+
+            if(fundMet && windowOpen) {
                 lockScreen.classList.add('hidden');
                 updateHubUI();
             } else {
                 lockScreen.classList.remove('hidden');
+                if(!fundMet) reasonTxt.innerHTML = 'Status: <span class="text-red-600 font-black">INSUFFICIENT FUNDS</span> (Target ₹13,000 pending).';
+                else reasonTxt.innerHTML = 'Status: <span class="text-orange-600 font-black">OUTSIDE DATE WINDOW</span> (Portal opens May 1-10 or within 10 days of target hit).';
             }
         }
 
@@ -661,25 +736,25 @@
             // March UI
             if(cl.marchScanned) {
                 document.getElementById('marchStatusBadge').innerText = 'VERIFIED';
-                document.getElementById('marchStatusBadge').className = 'text-[10px] font-black bg-green-100 text-green-700 px-2 py-1 rounded';
+                document.getElementById('marchStatusBadge').className = 'text-[10px] font-black bg-green-100 text-green-700 px-2 py-1 rounded shadow-sm border border-green-200';
                 document.getElementById('marchScannerUI').classList.remove('border-dashed', 'border-blue-200', 'bg-blue-50/50');
                 document.getElementById('marchScannerUI').classList.add('border-solid', 'border-green-400', 'bg-green-50');
-                document.getElementById('marchUploadBtn').innerHTML = '<i class="fas fa-check-circle text-3xl text-green-500 mb-2"></i><span class="text-xs font-bold text-green-600 uppercase">March Cleared</span>';
+                document.getElementById('marchUploadBtn').innerHTML = '<i class="fas fa-check-circle text-4xl text-green-500 mb-2 drop-shadow-sm"></i><span class="text-xs font-black text-green-700 uppercase tracking-widest">March Cleared</span>';
                 
                 // Unlock April
                 document.getElementById('aprilScannerUI').classList.remove('opacity-50', 'pointer-events-none');
                 document.getElementById('aprilStatusBadge').innerText = 'PENDING';
-                document.getElementById('aprilStatusBadge').className = 'text-[10px] font-black bg-blue-100 text-blue-700 px-2 py-1 rounded';
-                if(!cl.aprilScanned) document.getElementById('aprilUploadBtn').innerHTML = '<i class="fas fa-cloud-upload-alt text-2xl mb-2 text-blue-500"></i><span class="text-xs font-bold uppercase text-blue-500">Upload & Scan</span>';
+                document.getElementById('aprilStatusBadge').className = 'text-[10px] font-black bg-blue-100 text-blue-700 px-2 py-1 rounded shadow-sm border border-blue-200';
+                if(!cl.aprilScanned) document.getElementById('aprilUploadBtn').innerHTML = '<i class="fas fa-cloud-upload-alt text-3xl mb-2 text-blue-500 drop-shadow-sm hover:scale-110 transition"></i><span class="text-xs font-black uppercase tracking-widest text-blue-600">Upload & Scan</span>';
             }
 
             // April UI
             if(cl.aprilScanned) {
                 document.getElementById('aprilStatusBadge').innerText = 'VERIFIED';
-                document.getElementById('aprilStatusBadge').className = 'text-[10px] font-black bg-green-100 text-green-700 px-2 py-1 rounded';
+                document.getElementById('aprilStatusBadge').className = 'text-[10px] font-black bg-green-100 text-green-700 px-2 py-1 rounded shadow-sm border border-green-200';
                 document.getElementById('aprilScannerUI').classList.remove('border-dashed', 'border-gray-200', 'bg-gray-50');
                 document.getElementById('aprilScannerUI').classList.add('border-solid', 'border-green-400', 'bg-green-50');
-                document.getElementById('aprilUploadBtn').innerHTML = '<i class="fas fa-check-circle text-3xl text-green-500 mb-2"></i><span class="text-xs font-bold text-green-600 uppercase">April Cleared</span>';
+                document.getElementById('aprilUploadBtn').innerHTML = '<i class="fas fa-check-circle text-4xl text-green-500 mb-2 drop-shadow-sm"></i><span class="text-xs font-black text-green-700 uppercase tracking-widest">April Cleared</span>';
             }
 
             checkNOCReady();
@@ -687,18 +762,18 @@
             // Stage 4 UI
             if(cl.nocGenerated) {
                 document.getElementById('permStatusBadge').innerText = 'PENDING';
-                document.getElementById('permStatusBadge').className = 'text-[10px] font-black bg-blue-100 text-blue-700 px-2 py-1 rounded';
+                document.getElementById('permStatusBadge').className = 'text-[10px] font-black bg-blue-100 text-blue-700 px-2 py-1 rounded shadow-sm border border-blue-200';
                 document.getElementById('nocUploadBox').classList.remove('opacity-50', 'pointer-events-none', 'bg-gray-50');
                 document.getElementById('nocUploadBox').classList.add('bg-blue-50', 'border-blue-300', 'text-blue-600');
             }
 
             if(cl.nocVerified) {
-                document.getElementById('nocUploadBox').innerHTML = '<span class="text-xs font-bold text-green-600 uppercase"><i class="fas fa-check-circle text-lg"></i> Verified</span>';
-                document.getElementById('nocUploadBox').classList.add('border-solid', 'border-green-400', 'bg-green-50');
+                document.getElementById('nocUploadBox').innerHTML = '<span class="text-xs font-black text-green-700 uppercase tracking-widest"><i class="fas fa-check-circle text-xl mr-1 align-middle"></i> Hash Verified</span>';
+                document.getElementById('nocUploadBox').classList.add('border-solid', 'border-green-500', 'bg-green-100');
                 
                 document.getElementById('purchaseDateInput').disabled = false;
-                document.getElementById('purchaseDateInput').classList.remove('bg-gray-100', 'cursor-not-allowed');
-                document.getElementById('purchaseDateInput').classList.add('bg-blue-50', 'border-blue-300');
+                document.getElementById('purchaseDateInput').classList.remove('bg-gray-100', 'cursor-not-allowed', 'text-slate-600');
+                document.getElementById('purchaseDateInput').classList.add('bg-white', 'border-blue-400', 'text-blue-800', 'shadow-sm');
                 
                 document.getElementById('generatePermBtn').disabled = false;
                 document.getElementById('generatePermBtn').classList.remove('bg-gray-300', 'cursor-not-allowed');
@@ -717,14 +792,14 @@
                 scanning.classList.remove('hidden');
                 box.classList.add('is-scanning');
 
-                // Simulate AI API Call wait time
+                // Simulate AI Tracker API Call wait time
                 setTimeout(() => {
                     scanning.classList.add('hidden');
                     box.classList.remove('is-scanning');
                     appData.clearance[month + 'Scanned'] = true;
                     saveDb();
                     updateHubUI();
-                    alert(`AI Analysis Complete: ${month.toUpperCase()} Calendar verified to meet minimum compliance.`);
+                    alert(`AI Vision Complete: ${month.toUpperCase()} Tracker Calendar verified successfully.`);
                 }, 3000);
             }
         }
@@ -737,7 +812,7 @@
             if(cl.marchScanned && cl.aprilScanned && cb) {
                 btn.disabled = false;
                 btn.classList.remove('bg-gray-300', 'cursor-not-allowed');
-                btn.classList.add('bg-slate-800', 'hover:bg-slate-900');
+                btn.classList.add('bg-slate-800', 'hover:bg-slate-900', 'text-white');
             } else {
                 btn.disabled = true;
                 btn.classList.add('bg-gray-300', 'cursor-not-allowed');
@@ -752,7 +827,7 @@
             
             document.getElementById('nocDate').innerText = new Date().toLocaleDateString();
             
-            document.getElementById('previewTitle').innerText = "OFFICIAL NOC PREVIEW";
+            document.getElementById('previewTitle').innerText = "Official NOC Document Preview";
             document.getElementById('previewContent').innerHTML = '';
             document.getElementById('previewContent').appendChild(document.getElementById('printNOC').cloneNode(true));
             document.getElementById('previewContent').firstElementChild.classList.remove('hidden');
@@ -763,14 +838,14 @@
             const input = document.getElementById('nocUpload');
             if(input.files && input.files[0]) {
                 const box = document.getElementById('nocUploadBox');
-                box.innerHTML = '<i class="fas fa-spinner fa-spin text-blue-600 mb-1"></i> <span class="text-[10px] uppercase font-bold text-blue-600">Verifying Hash...</span>';
+                box.innerHTML = '<i class="fas fa-spinner fa-spin text-blue-600 mb-1 text-xl"></i> <span class="text-[10px] uppercase font-black tracking-widest text-blue-700">Verifying Hash...</span>';
                 
                 setTimeout(() => {
                     appData.clearance.nocVerified = true;
                     saveDb();
                     updateHubUI();
-                    alert("NOC Verified! Please select your final purchase date and issue the order.");
-                }, 2000);
+                    alert("Official NOC Authenticated! Please select your final purchase date and issue the Executive Order.");
+                }, 2500);
             }
         }
 
@@ -784,7 +859,7 @@
             document.getElementById('permDate').innerText = new Date().toLocaleDateString();
             document.getElementById('permPurchaseDate').innerText = new Date(pDate).toLocaleDateString('en-IN', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
             
-            document.getElementById('previewTitle').innerText = "OFFICIAL PERMISSION ORDER";
+            document.getElementById('previewTitle').innerText = "Official Permission Order Preview";
             document.getElementById('previewContent').innerHTML = '';
             document.getElementById('previewContent').appendChild(document.getElementById('printPerm').cloneNode(true));
             document.getElementById('previewContent').firstElementChild.classList.remove('hidden');
@@ -798,10 +873,11 @@
             document.getElementById('previewContent').innerHTML = '';
         }
 
+        // --- Celebration Effects ---
         function fireConfettiMax() {
-            var duration = 3 * 1000;
+            var duration = 4 * 1000;
             var animationEnd = Date.now() + duration;
-            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 300 };
+            var defaults = { startVelocity: 35, spread: 360, ticks: 60, zIndex: 300 };
 
             var interval = setInterval(function() {
                 var timeLeft = animationEnd - Date.now();
@@ -816,5 +892,4 @@
     </script>
 </body>
 </html>
-
 
