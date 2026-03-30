@@ -1,10 +1,9 @@
-const CACHE_NAME = 'matrix-cache-v1';
+const CACHE_NAME = 'matrix-cache-v2';
 const urlsToCache = [
     './',
     './index.html',
     './manifest.json',
-    './icon-192.png',
-    './icon-512.png'
+    './icon.svg'
 ];
 
 self.addEventListener('install', event => {
